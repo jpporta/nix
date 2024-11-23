@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+player_status=$(playerctl status 2> /dev/null)
+if [[ $? -eq 0 ]]; then
+    metadata="$(playerctl metadata artist) - $(playerctl metadata title)"
+fi
+
+# Foreground color formatting tags are optional
+if [[ $player_status = "Playing" ]]; then
+    echo "%{F#a6e3a1}%{F-}  $metadata"
+elif [[ $player_status = "Paused" ]]; then
+    echo "%{F#eba0ac}%{F-}  $metadata"
+else
+    echo ""
+fi

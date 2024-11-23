@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+COLUMNS="%l+%t+%h+%u+%p+%c"
+HEADER=$'Location\tTemp\tHum\tUV\tPrec\t'
+BASE="wttr.in/"
+
+if [ -z $1 ]
+then
+		RES=$"$(curl -s "$BASE?format=$COLUMNS\n")"
+else
+		RES=$"$(curl -s "$BASE{$1}?format=$COLUMNS\n")"
+fi
+echo "$HEADER"
+while IFS= read -r line; do
+		PAR=$(echo $line | awk -v OFS="\t" '$1=$1')
+		echo "${PAR/_/ }"
+
+done <<< "$RES"

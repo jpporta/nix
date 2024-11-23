@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+sudo rmmod v4l2loopback
+#
+sudo modprobe v4l2loopback max_buffers=1 devices=2
+
+gphoto2 --stdout --capture-movie | ffmpeg -i - -vcodec rawvideo -pix_fmt yuv420p -f v4l2 /dev/video0

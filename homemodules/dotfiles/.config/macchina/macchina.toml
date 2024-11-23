@@ -1,0 +1,3 @@
+theme = "astatine"
+
+show = ["Host", "Machine", "OperatingSystem", "LocalIP", "Battery","Processor", "Packages", "Terminal", "Shell", "Memory", "ProcessorLoad", "DiskSpace"]

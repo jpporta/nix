@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+if [[ -z  $(pgrep -x "thunderbird") ]]
+then
+				thunderbird  &
+fi
+if [[ -z $(pgrep -x "obsidian") ]]
+then
+				obsidian &
+fi
+
+if [[ -z $(pgrep -x "slack") ]]
+then
+				slack  &
+fi
+if [[ -z $(pgrep -x "firefox") ]]
+then
+				firefox  &
+				sleep 1
+				firefox --new-tab  https://app.clickup.com/14228731/v/l/6-901302382584-1
+				firefox --new-tab  https://github.com/Avodah-Inc/avodah-med/pulls
+				firefox --new-tab  https://icloud.com/calendar
+fi

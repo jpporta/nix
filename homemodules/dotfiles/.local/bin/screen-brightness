@@ -1,0 +1,37 @@
+#!/usr/bin/bash
+
+CURRENT=$(cat /sys/class/backlight/amdgpu_bl1/brightness)
+MAX=$(cat /sys/class/backlight/amdgpu_bl1/max_brightness)
+STEP=$(expr $MAX / 15)
+
+echo $STEP
+
+if [ -z $1 ]
+then
+				exit 1;
+fi
+
+if [ "$1" == "-d" ]
+then
+  if [ $CURRENT -le 0 ] 
+  then
+        exit 0;
+  fi
+	NEW=$(expr $MAX - $STEP)
+	if [ $STEP -le 0 ]
+	then
+					echo "0" > /sys/class/backlight/amdgpu_bl1/brightness
+	else
+					echo $NEW > /sys/class/backlight/amdgpu_bl1/brightness
+	fi
+
+fi
+
+if [ "$1" == "-i" ]
+then
+  if [ $CURRENT -ge $MAX ]
+  then
+        exit 0;
+  fi
+fi
+

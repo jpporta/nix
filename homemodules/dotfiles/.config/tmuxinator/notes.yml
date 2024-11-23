@@ -1,0 +1,10 @@
+name: notes
+root: ~/Documents/notes/Brain/
+
+on_project_start: git fetch origin && git pull
+
+windows:
+  - editor:
+      layout: main-vertical
+      panes:
+        - nvim .

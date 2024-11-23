@@ -1,0 +1,11 @@
+# /home/jpporta/.config/tmuxinator/nixos.yml
+
+name: nixos
+root: ~/nixos
+
+
+windows:
+  - editor:
+      layout: main-vertical
+      panes:
+        - n .

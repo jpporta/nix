@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+swww init 2> /dev/null
+swww img $(ls /home/jpporta/Wallpaper/*.png | sort -R | tail -1) 
+sleep 600
+wallpaper
+

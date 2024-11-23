@@ -1,0 +1,8 @@
+# /usr/bin/bash
+colima status || colima start
+
+docker run -d --name personal_db -e POSTGRES_PASSWORD=porta123 -v postgres_personal:/var/lib/postgresql/data -p 5432:5432 postgres:latest || docker start personal_db
+
+sleep 5
+
+PGPASSWORD=porta123 psql -U postgres -d personal -p 5432 -h localhost -c "INSERT INTO time_entries (date) VALUES ('$(date '+%Y-%m-%d')')"

@@ -1,0 +1,8 @@
+# /usr/bin/bash
+colima status || colima start
+
+docker run -d --name personal_db -e POSTGRES_PASSWORD=porta123 -v postgres_personal:/var/lib/postgresql/data -p 5432:5432 postgres:latest || docker start personal_db
+
+sleep 5
+
+PGPASSWORD=porta123 psql -U postgres -d personal -p 5432 -h localhost -c "UPDATE time_entries SET \"end\"='$(date '+%H:%M:%S')' WHERE date='$(date '+%Y-%m-%d')' AND \"end\" IS NULL"

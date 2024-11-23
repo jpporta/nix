@@ -1,0 +1,59 @@
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
+
+yabai -m config layout bsp
+
+yabai -m config window_placement second_child
+
+yabai -m config top_padding 16
+yabai -m config bottom_padding 16
+yabai -m config left_padding 16
+yabai -m config right_padding 16
+yabai -m config window_gap 16
+
+yabai -m config mouse_follows_focus on
+yabai -m config mouse_modifier alt
+yabai -m config mouse_action1 move
+yabai -m config mouse_action2 resize
+yabai -m mouse_drop_action swap
+
+
+function setup_space {
+  local idx="$1"
+  local name="$2"
+  local space=
+  echo "setup space $idx : $name"
+
+  space=$(yabai -m query --spaces --space "$idx")
+  if [ -z "$space" ]; then
+    yabai -m space --create
+  fi
+
+  yabai -m space "$idx" --label "$name"
+
+	if [ "$idx" -gt 3 ]; then
+		yabai -m space "$idx" --display 3
+  elif [ "$idx" -gt 1 ]; then
+		yabai -m space "$idx" --display 2
+  else
+		yabai -m space "$idx" --display 1
+  fi
+}
+
+setup_space 1 work
+setup_space 2 code
+setup_space 3 random
+
+for idx in $(yabai -m query --spaces | jq '.[].index | select(. > 3)' | sort -nr); do
+  yabai -m space --destroy "$idx"
+done
+
+yabai -m rule --add app="^System Settings$" manage=off
+yabai -m rule --add app="^Calculator$" manage=off
+yabai -m rule --add app="^Karabiner-Elements$" manage=off
+
+yabai pm config window_border on
+yabai -m config window_border_width 3;
+yabai -m config active_window_border_color 0xF38BA8;
+yabai -m config active_window_opacity 1.0;
+yabai -m config normal_window_opacity 1.0;

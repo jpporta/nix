@@ -1,0 +1,42 @@
+alt - j : yabai -m window --focus south
+alt - k : yabai -m window --focus north
+alt - h : yabai -m window --focus west
+alt - l : yabai -m window --focus east
+
+shift + alt - r : yabai -m space --rotate 270
+shift + alt - z : yabai -m space --mirror y-axis
+shift + alt - x : yabai -m space --mirror x-axis
+shift + alt - t : yabai -m space --toggle float --grid 4:4:1:1:2:2
+
+shift + alt - m : yabai -m window --toggle zoom-fullscreen
+shift + alt - e : yabai -m space --balance
+
+shift + alt - j : yabai -m window --swap south
+shift + alt - k : yabai -m window --swap north
+shift + alt - h : yabai -m window --swap west
+shift + alt - l : yabai -m window --swap east
+
+ctrl + alt - j : yabai -m window --warp south
+ctrl + alt - k : yabai -m window --warp north
+ctrl + alt - h : yabai -m window --warp west
+ctrl + alt - l : yabai -m window --warp east
+                                       
+shift + alt - y : yabai -m window --space 1
+shift + alt - u : yabai -m window --space 2
+shift + alt - i : yabai -m window --space 3
+shift + alt - o : yabai -m window --space 4
+shift + alt - p : yabai -m window --space 5
+shift + alt - 0x21 : yabai -m window --space 6
+
+alt - y : yabai -m space --focus 1
+alt - u : yabai -m space --focus 2
+alt - i : yabai -m space --focus 3
+alt - o : yabai -m space --focus 4
+alt - p : yabai -m space --focus 5
+alt - 0x21 : yabai -m space --focus 6
+
+ctrl + alt - q : yabai --stop-service
+ctrl + alt - s : yabai --start-service
+ctrl + alt - r : yabai --restart-service
+
+alt - return : open -n -a "WezTerm"
