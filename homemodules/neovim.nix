@@ -31,9 +31,5 @@
   vscode-langservers-extracted
 	];
 	programs.java.enable = true;
-	xdg.configFile."nvim" = {
-			source = ./dotfiles/.config/nvim;
-			recursive = true;
-		};
 	};
 }

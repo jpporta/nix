@@ -1,6 +1,0 @@
-#!/usr/bin/bash
-
-FOLDER="$(pwd | sed 's/.*\///g')" 
-tmux new -s $FOLDER -d
-tmux detach
-tmux a -t $FOLDER

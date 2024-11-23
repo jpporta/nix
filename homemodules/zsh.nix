@@ -38,9 +38,6 @@
 						enable = true;
 						enableZshIntegration = true;
 				};
-			xdg.configFile."p10k.zsh" = {
-					source = ./dotfiles/.config/.p10k.zsh;
-				};
 	};
 }
 

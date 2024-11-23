@@ -7,9 +7,5 @@
 				tmux
 				tmuxinator
 		];
-			xdg.configFile."tmux" = {
-					source = ./dotfiles/.config/tmux;
-					recursive = true;
-				};
-			};
+		};
 }
