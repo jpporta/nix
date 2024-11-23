@@ -9,6 +9,8 @@
   	../../homemodules
   ];
 
+
+
   neovim.enable = true;
 	workapps.enable = true;
 	kitty.enable = true;
@@ -16,11 +18,20 @@
 	zsh.enable = true;
 	git.enable = true;
 
-
   nixpkgs.config.allowUnfree = true;
   home.packages = [
     pkgs.stow
+		pkgs.playerctl
+		pkgs.nwg-look
+		pkgs.catppuccin-gtk
   ];
+
+		home.pointerCursor = {
+			name = "phinger-cursors-light";
+			package = pkgs.phinger-cursors;
+			size = 32;
+			gtk.enable = true;
+		};
 
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
