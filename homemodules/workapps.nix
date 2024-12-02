@@ -6,6 +6,7 @@
 	config = lib.mkIf config.workapps.enable {
 				home.packages = with pkgs; [
 						slack
+						openvpn
 				];
 		};
 }

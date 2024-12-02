@@ -19,15 +19,24 @@ inputs.home-manager.nixosModules.default
 
   networking = {
   	hostName = "joao-nixos";
-	useDHCP = false;
-	interfaces = {
-		enp14s0 = {
-			useDHCP = true;
+		useDHCP = false;
+		interfaces = {
+				enp14s0 = {
+					useDHCP = true;
+				};
+		};
+
+		networkmanager.enable = true;
+		firewall = {
+				enable = true;
+		};
+
+		defaultGateway = {
+				address = "192.169.3.1";
+				interface = "enp14s0";
 		};
 	};
-	networkmanager.enable = true;
-  };
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
 	nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Set your time zone.
