@@ -30,6 +30,10 @@
       tailwindcss-language-server
       vscode-langservers-extracted
       nixfmt
+      markdownlint-cli
+      golangci-lint
+      golangci-lint-langserver
+      gopls
     ];
     programs.java.enable = true;
   };

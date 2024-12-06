@@ -18,19 +18,20 @@
 
   networking = {
     hostName = "joao-nixos";
-    useDHCP = false;
-    interfaces = { enp14s0 = { useDHCP = true; }; };
-
     networkmanager.enable = true;
-    firewall = { enable = true; };
-
-    defaultGateway = {
-      address = "192.169.3.1";
-      interface = "enp14s0";
-    };
+    dhcpcd.enable = true;
   };
 
+  systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
+  services.dnsmasq.enable = true;
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  services.pcscd.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
 
   # Set your time zone.
   time.timeZone = "America/Sao_Paulo";
@@ -39,15 +40,15 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
-    LC_ADDRESS = "pt_BR.UTF-8";
-    LC_IDENTIFICATION = "pt_BR.UTF-8";
-    LC_MEASUREMENT = "pt_BR.UTF-8";
-    LC_MONETARY = "pt_BR.UTF-8";
-    LC_NAME = "pt_BR.UTF-8";
-    LC_NUMERIC = "pt_BR.UTF-8";
-    LC_PAPER = "pt_BR.UTF-8";
-    LC_TELEPHONE = "pt_BR.UTF-8";
-    LC_TIME = "pt_BR.UTF-8";
+    LC_ADDRESS = "en_US.UTF-8";
+    LC_IDENTIFICATION = "en_US.UTF-8";
+    LC_MEASUREMENT = "en_US.UTF-8";
+    LC_MONETARY = "en_US.UTF-8";
+    LC_NAME = "en_US.UTF-8";
+    LC_NUMERIC = "en_US.UTF-8";
+    LC_PAPER = "en_US.UTF-8";
+    LC_TELEPHONE = "en_US.UTF-8";
+    LC_TIME = "en_US.UTF-8";
   };
 
   # Configure keymap in X11
@@ -87,10 +88,21 @@
     keyboards = {
       default = {
         ids = [ "*" ];
-        settings = { main = { esc = "overload(control, esc)"; }; };
+        settings = {
+          main = {
+            capslock = "overload(control, esc)";
+            esc = "capslock";
+          };
+        };
       };
     };
   };
+
+  # Bluetooth
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot =
+    true; # powers up the default Bluetooth controller on boot
+  services.blueman.enable = true;
 
   system.stateVersion = "24.05"; # Did you read the comment?
 
