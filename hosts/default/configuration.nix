@@ -79,8 +79,28 @@
   nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [ vim git wget xfce.thunar killall ];
+  nixpkgs.overlays = [
+    (self: super: {
+      zoomUsFixed = pkgs.zoom-us.overrideAttrs (old: {
+        postFixup = old.postFixup + ''
+          wrapProgram $out/bin/zoom-us --unset XDG_SESSION_TYPE
+        '';
+      });
+      zoom = pkgs.zoom-us.overrideAttrs (old: {
+        postFixup = old.postFixup + ''
+          wrapProgram $out/bin/zoom --unset XDG_SESSION_TYPE
+        '';
+      });
+    })
+  ];
+  environment.systemPackages = with pkgs; [
+    vim
+    git
+    wget
+    xfce.thunar
+    killall
+    zoom
+  ];
 
   # Keyboard
   services.keyd = {

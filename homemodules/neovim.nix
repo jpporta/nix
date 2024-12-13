@@ -34,6 +34,9 @@
       golangci-lint
       golangci-lint-langserver
       gopls
+      silicon
+      obsidian
+      nest-cli
     ];
     programs.java.enable = true;
   };

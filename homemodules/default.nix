@@ -1,5 +1,6 @@
 { pkgs, ... }: {
   imports = [
+    ./3dprint.nix
     ./neovim.nix
     ./workapps.nix
     ./kitty.nix

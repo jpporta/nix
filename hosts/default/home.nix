@@ -14,6 +14,7 @@
   zsh.enable = true;
   git.enable = true;
   music.enable = true;
+  print3d.enable = true;
 
   nixpkgs.config.allowUnfree = true;
   home.packages =
