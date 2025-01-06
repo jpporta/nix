@@ -37,6 +37,11 @@
       silicon
       obsidian
       nest-cli
+      prisma
+      openssl
+      sqlc
+      go-migrate
+      air
     ];
     programs.java.enable = true;
   };
