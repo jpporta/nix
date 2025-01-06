@@ -100,6 +100,7 @@
     xfce.thunar
     killall
     zoom
+    zsh
   ];
 
   # Keyboard
