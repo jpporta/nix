@@ -57,12 +57,14 @@
     variant = "";
   };
 
+  users.defaultUserShell = pkgs.zsh;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.jpporta = {
     isNormalUser = true;
     description = "Joao Porta";
     extraGroups = [ "networkmanager" "wheel" "kvm" "libvirtd" "docker" ];
     packages = with pkgs; [ firefox neovim ];
+    shell = pkgs.zsh
   };
 
   home-manager = {
