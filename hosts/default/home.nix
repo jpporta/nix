@@ -29,7 +29,6 @@
 
   home.sessionVariables = {
     EDITOR = "nvim";
-    SHELL = "zsh";
     GPG_TTY = "$(tty)";
     PRISMA_QUERY_ENGINE_LIBRARY =
       "${pkgs.prisma-engines}/lib/libquery_engine.node";
