@@ -1,7 +1,7 @@
 { pkgs, lib, config, ... }: {
   options = { zsh.enable = lib.mkEnableOption "enables zsh"; };
   config = lib.mkIf config.zsh.enable {
-    home.packages = with pkgs; [ eza bat zsh-powerlevel10k gearlever ];
+    home.packages = with pkgs; [ zsh eza bat zsh-powerlevel10k gearlever ];
     programs.zsh = {
       enable = true;
       oh-my-zsh = { enable = true; };
